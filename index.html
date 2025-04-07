@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hi I am a calculator</h1>
+  <button class="
+  
+  first button
+  ">1</button>
+  <button class="
+  
+  second button
+  ">2</button>
+  <button class="
+  
+  third button
+  ">3</button>
+  <button class="
+  
+  fourth button
+  ">4</button>
+  <button class="
+  
+  fifth button
+  ">5</button>
+  
+  <button class="opera plus">+</button>
+  <button class="opera minus">-</button>
+  <button class="opera multiply">*</button>
+  <button class="opera divide">/</button>
+
+  <button class="calculate">=</button>
+ <p class="answer">Result:</p>
+</body>
+<script>
+
+let clickedNum;
+let firstNumber;
+let secondNumber;
+let operator;
+let currentInput="";
+
+let isclicked = false;
+
+   const but1=document.querySelectorAll('.button')
+   but1.forEach(element => {
+    element.addEventListener('click',(event)=>{
+      clickedNum = Number(event.target.textContent);
+      
+
+      currentInput+=event.target.textContent;
+      if(!isclicked){
+        firstNumber= Number(currentInput);
+        console.log(`firstNumber is :${firstNumber}`);
+        
+      }
+      else{
+        secondNumber=Number(currentInput);
+        console.log(`secondNumber is :${secondNumber}`)
+      }
+    });
+   });
+   
+    const but2= document.querySelectorAll('.opera')
+    but2.forEach(element =>{
+      element.addEventListener('click',function storeoper(){
+        operator = this.textContent;
+      isclicked = true;
+      currentInput="";
+  });
+    });
+    
+
+
+  document.querySelector('.calculate').addEventListener('click',function calc(){
+    let result;
+  if(operator ==='+'){
+    result= firstNumber + secondNumber;
+  }else if(operator === '-'){
+    result = firstNumber - secondNumber;
+  }
+  else if(operator === '*'){
+    result = firstNumber * secondNumber;
+  }
+  else if(operator === '/'){
+    result = firstNumber/ secondNumber;
+  }
+  document.querySelector('.answer').textContent= result;
+  });
+
+
+</script>
+</html>
